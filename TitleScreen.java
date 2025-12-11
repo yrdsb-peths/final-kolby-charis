@@ -10,12 +10,12 @@ public class TitleScreen extends World
         Label instructions = new Label("Press 'space' to start", 24);
         addObject(instructions, 300, 250);
     }
-    
+
     public void act()
     {
         if (Greenfoot.isKeyDown("space"))
         {
-            Greenfoot.setWorld(new GameWorld());
+            Greenfoot.setWorld(new MyWorld());
         }
     }
 }
