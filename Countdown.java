@@ -13,7 +13,7 @@ public class Countdown extends World {
     public void act() {
         int timeLeft = 3 - (timer.millisElapsed() / 1000);
         if (timeLeft <= 0) {
-            removeObject(countdown);
+            Greenfoot.setWorld(new GameWorld());
         }
         countdown.setValue(timeLeft);
     }
