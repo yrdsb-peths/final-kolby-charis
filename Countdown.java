@@ -6,6 +6,10 @@ public class Countdown extends World {
 
     public Countdown() {
         super(600, 400, 1);
+        GreenfootImage background = new GreenfootImage("light.jpg");
+        background.scale(600, 400);
+        setBackground(background);
+        
         addObject(countdown, getWidth() / 2, getHeight() / 2);
         timer.mark();
     }
