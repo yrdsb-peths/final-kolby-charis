@@ -37,7 +37,10 @@ public class GameWorld extends World
         }
         if (!allowMovement)
         {
-            doll.act();
+            if (doll.getX() != lastX || doll.getY() != lastY)
+            {
+                Greenfoot.setWorld(new GameOver());
+            }
         }
     }
 }
