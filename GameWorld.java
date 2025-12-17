@@ -30,8 +30,8 @@ public class GameWorld extends World
             doll.faceFront();
             startPlayed = false;
             allowMovement = false;
-            lastX = doll.getX();
-            lastY = doll.getY();
+            lastX = player.getX();
+            lastY = player.getY();
             return;
         }
 
