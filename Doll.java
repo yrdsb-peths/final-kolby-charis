@@ -5,7 +5,7 @@ public class Doll extends Actor
     
     public Doll()
     {
-        faceFront();
+        faceBack();
     }
 
     public void faceFront()

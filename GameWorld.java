@@ -27,14 +27,19 @@ public class GameWorld extends World
         {
             startSound.stop();
             scanSound.play();
+            doll.faceFront();
+            startPlayed = false;
             allowMovement = false;
             lastX = doll.getX();
             lastY = doll.getY();
+            return
         }
 
-        if (!startSound.isPlaying())
+        if (!startPlayed && !startSound.isPlaying() && !scanSound.isPlaying())
         {
+            scanSound.stop();
             startSound.play();
+            doll.faceBack();
             startPlayed = true;
             allowMovement = true;
             return;
