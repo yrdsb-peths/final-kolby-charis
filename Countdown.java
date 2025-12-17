@@ -3,6 +3,7 @@ import greenfoot.*;
 public class Countdown extends World {
     SimpleTimer timer = new SimpleTimer();
     Label countdown = new Label(3, 80);
+    Bar bar = new Bar("Time", "", 3000, 3000);
 
     public Countdown() {
         super(600, 400, 1);
@@ -12,13 +13,20 @@ public class Countdown extends World {
         
         addObject(countdown, getWidth() / 2, getHeight() / 2);
         timer.mark();
+
+        addObject(bar, getWidth() / 2, getHeight() / 2 + 50);
+        bar.setShowTextualUnits(false);
     }
 
     public void act() {
-        int timeLeft = 3 - (timer.millisElapsed() / 1000);
-        if (timeLeft <= 0) {
+        int millisElapsed = timer.millisElapsed();
+        int timeLeftMillis = 3000 - millisElapsed;
+        
+        if (timeLeftMillis <= 0) {
             Greenfoot.setWorld(new GameWorld());
         }
-        countdown.setValue(timeLeft);
+        
+        countdown.setValue(3 - (millisElapsed / 1000));
+        bar.setValue(timeLeftMillis);
     }
 }
