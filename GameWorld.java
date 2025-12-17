@@ -32,7 +32,7 @@ public class GameWorld extends World
             allowMovement = false;
             lastX = doll.getX();
             lastY = doll.getY();
-            return
+            return;
         }
 
         if (!startPlayed && !startSound.isPlaying() && !scanSound.isPlaying())

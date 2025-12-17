@@ -12,7 +12,7 @@ public class Player extends Actor
     {
         if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w"))
         {
-            setLocation(getX() + 5, getY());
+            setLocation(getX(), getY() - 1);
         }
     }
 }
