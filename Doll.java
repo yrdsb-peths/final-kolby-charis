@@ -1,19 +1,15 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Doll here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Doll extends Actor
 {
-    /**
-     * Act - do whatever the Doll wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
+    public Doll()
     {
-        // Add your action code here.
+        GreenfootImage front = new GreenfootImage("front.png");
+        front.scale(50, 75);
+
+        GreenfootImage back = new GreenfootImage("back.png");
+        back.scale(50, 75);
+
+        setImage(front);
     }
 }
