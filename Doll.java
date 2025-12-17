@@ -12,12 +12,4 @@ public class Doll extends Actor
 
         setImage(front);
     }
-
-    public void act()
-    {
-        if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w"))
-        {
-            setLocation(getX() + 5, getY());
-        }
-    }
 }
