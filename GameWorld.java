@@ -3,6 +3,12 @@ import greenfoot.*;
 public class GameWorld extends World
 {
     Doll doll = new Doll();
+    GreenfootSound startSound = new GreenfootSound("squid.mp3");
+    GreenfootSound scanSound = new GreenfootSound("scan.mp3");
+    boolean startPlayed = false;
+    boolean allowMovement = false;
+    int lastX;
+    int lastY;
     
     public GameWorld()
     {    
@@ -15,6 +21,23 @@ public class GameWorld extends World
 
     public void act()
     {
-        
+        if (!startSound.isPlaying())
+        {
+            startSound.play();
+            startPlayed = true;
+            allowMovement = true;
+            return;
+        }
+        if (startPlayed && !startSound.isPlaying() && !scanSound.isPlaying())
+        {
+            scanSound.play();
+            allowMovement = false;
+            lastX = doll.getX();
+            lastY = doll.getY();
+        }
+        if (!allowMovement)
+        {
+            doll.act();
+        }
     }
 }
