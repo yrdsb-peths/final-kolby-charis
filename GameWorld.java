@@ -3,6 +3,7 @@ import greenfoot.*;
 public class GameWorld extends World
 {
     Doll doll = new Doll();
+    Player player = new Player();
     GreenfootSound startSound = new GreenfootSound("squid.mp3");
     GreenfootSound scanSound = new GreenfootSound("scan.mp3");
     boolean startPlayed = false;
@@ -17,17 +18,20 @@ public class GameWorld extends World
         background.scale(600, 400);
         setBackground(background);
         addObject(doll, getWidth() / 2 - 5, 90);
+        addObject(player, 400, 350);
     }
 
     public void act()
     {
         if (startPlayed && !startSound.isPlaying() && !scanSound.isPlaying())
         {
+            startSound.stop();
             scanSound.play();
             allowMovement = false;
             lastX = doll.getX();
             lastY = doll.getY();
         }
+
         if (!startSound.isPlaying())
         {
             startSound.play();
@@ -35,12 +39,18 @@ public class GameWorld extends World
             allowMovement = true;
             return;
         }
+
         if (!allowMovement)
         {
-            if (doll.getX() != lastX || doll.getY() != lastY)
+            if (player.getX() != lastX || player.getY() != lastY)
             {
                 Greenfoot.setWorld(new GameOver());
             }
+        }
+
+        if (player.getY() <= 100)
+        {
+            Greenfoot.setWorld(new Win());
         }
     }
 }
