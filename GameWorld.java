@@ -21,19 +21,19 @@ public class GameWorld extends World
 
     public void act()
     {
-        if (!startSound.isPlaying())
-        {
-            startSound.play();
-            startPlayed = true;
-            allowMovement = true;
-            return;
-        }
         if (startPlayed && !startSound.isPlaying() && !scanSound.isPlaying())
         {
             scanSound.play();
             allowMovement = false;
             lastX = doll.getX();
             lastY = doll.getY();
+        }
+        if (!startSound.isPlaying())
+        {
+            startSound.play();
+            startPlayed = true;
+            allowMovement = true;
+            return;
         }
         if (!allowMovement)
         {
