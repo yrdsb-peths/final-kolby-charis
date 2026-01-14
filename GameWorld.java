@@ -11,6 +11,7 @@ public class GameWorld extends World
     int lastX;
     int lastY;
     Label scoreLabel = new Label("Score: 0", 30);
+    SimpleTimer deductionTimer = new SimpleTimer();
     
     public GameWorld()
     {    
@@ -22,6 +23,7 @@ public class GameWorld extends World
         addObject(player, 400, 350);
         addObject(scoreLabel, 100, 30);
         updateScoreLabel();
+        deductionTimer.mark();
     }
 
     public void act()
@@ -65,6 +67,12 @@ public class GameWorld extends World
             ScoreManager.addScore(350 - player.getY());
             Greenfoot.setWorld(new Win(ScoreManager.getScore()));
             return;
+        }
+        
+        if (deductionTimer.millisElapsed() >= 200)
+        {
+            ScoreManager.addScore(-1);
+            deductionTimer.mark();
         }
 
         updateScoreLabel();
