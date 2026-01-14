@@ -5,12 +5,19 @@ public class Countdown extends World {
     Label countdown = new Label(3, 80);
     Bar bar = new Bar("", "", 3000, 3000);
 
-    public Countdown() {
+    int level;
+
+    public Countdown(int level) {
         super(600, 400, 1);
+        this.level = level;
         GreenfootImage background = new GreenfootImage("game setting.png");
         background.scale(600, 400);
         setBackground(background);
         
+        Label levelLabel = new Label("Level " + level, 50);
+        levelLabel.setFillColor(Color.WHITE);
+        addObject(levelLabel, 300, 80);
+
         addObject(countdown, 300, 180);
         countdown.setFillColor(Color.YELLOW);
         countdown.setLineColor(Color.BLACK);
@@ -29,7 +36,7 @@ public class Countdown extends World {
         int timeLeftMillis = 3000 - millisElapsed;
         
         if (timeLeftMillis <= 0) {
-            Greenfoot.setWorld(new GameWorld());
+            Greenfoot.setWorld(new GameWorld(level));
         }
         
         int secondsLeft = 3 - (millisElapsed / 1000);

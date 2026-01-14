@@ -15,10 +15,12 @@ public class GameWorld extends World
     SimpleTimer delayTimer = new SimpleTimer();
     boolean isWaitingBetweenSounds = false;
     int currentRandomDelay = 0;
+    int level;
     
-    public GameWorld()
+    public GameWorld(int level)
     {    
         super(600, 400, 1); 
+        this.level = level;
         GreenfootImage background = new GreenfootImage("game setting.png");
         background.scale(600, 400);
         background.setColor(Color.RED);
@@ -72,7 +74,7 @@ public class GameWorld extends World
             {
                 startSound.stop();
                 scanSound.stop();
-                Greenfoot.setWorld(new GameOver(ScoreManager.getScore() + (350 - player.getY())));
+                Greenfoot.setWorld(new GameOver(ScoreManager.getScore() + (350 - player.getY()), 1));
             }
         }
 
@@ -81,7 +83,7 @@ public class GameWorld extends World
             startSound.stop();
             scanSound.stop();
             ScoreManager.addScore(350 - player.getY());
-            Greenfoot.setWorld(new Win(ScoreManager.getScore()));
+            Greenfoot.setWorld(new Win(ScoreManager.getScore(), level + 1));
             return;
         }
         

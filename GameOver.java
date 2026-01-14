@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class GameOver extends World
 {
-    public GameOver(int finalScore)
+    public GameOver(int finalScore, int level)
     {    
         super(600, 400, 1); 
         GreenfootImage background = new GreenfootImage("game setting.png");
@@ -17,7 +17,7 @@ public class GameOver extends World
         Label scoreLabel = new Label("Final Score: " + finalScore, 40);
         scoreLabel.setFillColor(Color.YELLOW);
         addObject(scoreLabel, 300, 200);
-        Button restartButton = new Button("Restart", 40);
+        Button restartButton = new Button("Restart", 40, level);
         addObject(restartButton, 300, 300);
     }
 }

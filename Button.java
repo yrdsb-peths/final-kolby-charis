@@ -6,11 +6,13 @@ public class Button extends Actor
     private int fontSize;
     private Color fillColor;
     private Color lineColor;
+    private int targetLevel;
     
-    public Button(String text, int fontSize)
+    public Button(String text, int fontSize, int targetLevel)
     {
         this.text = text;
         this.fontSize = fontSize;
+        this.targetLevel = targetLevel;
         this.fillColor = Color.WHITE;
         this.lineColor = Color.BLACK;
         updateImage();
@@ -24,7 +26,7 @@ public class Button extends Actor
             {
                 ScoreManager.resetScore();
             }
-            Greenfoot.setWorld(new Countdown());
+            Greenfoot.setWorld(new Countdown(targetLevel));
         }
         
         if (Greenfoot.mouseMoved(this)) {

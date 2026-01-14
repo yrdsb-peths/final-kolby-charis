@@ -39,7 +39,7 @@ public class TitleScreen extends World
         if (Greenfoot.isKeyDown("space"))
         {
             ScoreManager.resetScore();
-            Greenfoot.setWorld(new Countdown());
+            Greenfoot.setWorld(new Countdown(1));
         }
     }
 }
