@@ -1,4 +1,4 @@
-zimport greenfoot.*;
+import greenfoot.*;
 
 public class Button extends Actor
 {
