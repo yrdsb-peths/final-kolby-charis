@@ -19,6 +19,8 @@ Button - Clickable objects
 TitleScreen - Start menu
 Countdown - 3 second timer
 GameOver/Win - End screens
+High Score - Tracks personal best across games
+Explosion Sound - Plays when you lose or hit an enemy
 
 Credits:
 Progress bar: https://www.greenfoot.org/scenarios/4114

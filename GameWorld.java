@@ -6,6 +6,7 @@ public class GameWorld extends World
     Player player = new Player();
     GreenfootSound startSound = new GreenfootSound("squid.mp3");
     GreenfootSound scanSound = new GreenfootSound("scan.mp3");
+    GreenfootSound explosionSound = new GreenfootSound("explosion.mp3");
     boolean startPlayed = false;
     boolean allowMovement = false;
     int lastX;
@@ -94,6 +95,7 @@ public class GameWorld extends World
             {
                 startSound.stop();
                 scanSound.stop();
+                explosionSound.play();
                 int currentRoundScore = 350 - player.getY();
                 if (currentRoundScore < 0) currentRoundScore = 0;
                 ScoreManager.addScore(currentRoundScore);
@@ -122,6 +124,7 @@ public class GameWorld extends World
     {
         startSound.stop();
         scanSound.stop();
+        explosionSound.play();
         int currentRoundScore = 350 - player.getY();
         if (currentRoundScore < 0) currentRoundScore = 0;
         ScoreManager.addScore(currentRoundScore);
