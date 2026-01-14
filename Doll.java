@@ -1,13 +1,18 @@
 import greenfoot.*;
 
+/**
+ * Doll that toggles between facing front and back.
+ */
 public class Doll extends Actor
 {
-    
     public Doll()
     {
         faceBack();
     }
 
+    /**
+     * Changes the doll's image to face front (scanning phase).
+     */
     public void faceFront()
     {
         GreenfootImage front = new GreenfootImage("front.png");
