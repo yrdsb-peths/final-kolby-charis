@@ -16,6 +16,7 @@ public class GameWorld extends World
     boolean isWaitingBetweenSounds = false;
     int currentRandomDelay = 0;
     int level;
+    Enemy[] enemies;
     
     public GameWorld(int level)
     {    
@@ -29,6 +30,25 @@ public class GameWorld extends World
         addObject(doll, getWidth() / 2 - 5, 90);
         addObject(player, 400, 350);
         addObject(scoreLabel, 100, 30);
+        
+        int enemyCount = level - 1;
+        if (enemyCount < 0) enemyCount = 0;
+        
+        enemies = new Enemy[enemyCount];
+        for (int i = 0; i < enemies.length; i++)
+        {
+            enemies[i] = new Enemy();
+            int x = 400;
+            int y = 350;
+            while (Math.abs(x - 400) < 60 && Math.abs(y - 350) < 60)
+            {
+                x = Greenfoot.getRandomNumber(getWidth());
+                y = 120 + Greenfoot.getRandomNumber(200);
+            }
+            
+            addObject(enemies[i], x, y);
+        }
+
         scoreLabel.setFillColor(Color.YELLOW);
         scoreLabel.setLineColor(Color.BLACK);
         updateScoreLabel();
@@ -74,7 +94,10 @@ public class GameWorld extends World
             {
                 startSound.stop();
                 scanSound.stop();
-                Greenfoot.setWorld(new GameOver(ScoreManager.getScore() + (350 - player.getY()), 1));
+                int currentRoundScore = 350 - player.getY();
+                if (currentRoundScore < 0) currentRoundScore = 0;
+                ScoreManager.addScore(currentRoundScore);
+                Greenfoot.setWorld(new GameOver(ScoreManager.getScore(), 1));
             }
         }
 
@@ -92,8 +115,17 @@ public class GameWorld extends World
             ScoreManager.addScore(-1);
             deductionTimer.mark();
         }
-
         updateScoreLabel();
+    }
+
+    public void lose()
+    {
+        startSound.stop();
+        scanSound.stop();
+        int currentRoundScore = 350 - player.getY();
+        if (currentRoundScore < 0) currentRoundScore = 0;
+        ScoreManager.addScore(currentRoundScore);
+        Greenfoot.setWorld(new GameOver(ScoreManager.getScore(), 1));
     }
 
     private void updateScoreLabel()

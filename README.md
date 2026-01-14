@@ -13,6 +13,7 @@ Files:
 GameWorld - Main game logic
 Player - Movement controls
 Doll - Facing and music
+Enemy - Moving obstacles
 ScoreManager - Saves score across worlds
 Button - Clickable objects
 TitleScreen - Start menu

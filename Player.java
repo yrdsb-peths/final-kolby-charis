@@ -4,8 +4,8 @@ public class Player extends Actor
 {
     public Player()
     {
-        GreenfootImage player = new GreenfootImage("player.png");
-        player.scale(50, 75);
+        GreenfootImage player = new GreenfootImage("player.jpg");
+        player.scale(40, 60);
         setImage(player);
     }
 
