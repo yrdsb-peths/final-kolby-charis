@@ -1,5 +1,8 @@
 import greenfoot.*;
 
+/**
+ * World displayed when player loses or hits an enemy.
+ */
 public class GameOver extends World
 {
     public GameOver(int finalScore, int level)

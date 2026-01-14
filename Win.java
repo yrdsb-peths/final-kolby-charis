@@ -1,5 +1,8 @@
 import greenfoot.*; 
 
+/**
+ * Displayed when player reaches the finish line.
+ */
 public class Win extends World
 {
     public Win(int finalScore, int nextLevel)

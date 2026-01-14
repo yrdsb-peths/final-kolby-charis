@@ -1,5 +1,8 @@
 import greenfoot.*;
 
+/**
+ * World that displays a 3-second countdown and level indicator before the game starts.
+ */
 public class Countdown extends World {
     SimpleTimer timer = new SimpleTimer();
     Label countdown = new Label(3, 80);
@@ -7,6 +10,9 @@ public class Countdown extends World {
 
     int level;
 
+    /**
+     * Initializes the countdown with the specified level.
+     */
     public Countdown(int level) {
         super(600, 400, 1);
         this.level = level;

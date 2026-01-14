@@ -1,5 +1,8 @@
 import greenfoot.*;
 
+/**
+ * Main game world
+ */
 public class GameWorld extends World
 {
     Doll doll = new Doll();
@@ -19,6 +22,9 @@ public class GameWorld extends World
     int level;
     Enemy[] enemies;
     
+    /**
+     * Initializes world with player, doll, and enemies.
+     */
     public GameWorld(int level)
     {    
         super(600, 400, 1); 
@@ -56,6 +62,9 @@ public class GameWorld extends World
         deductionTimer.mark();
     }
 
+    /**
+     * Handles audio logic, win conditions, and movement detection.
+     */
     public void act()
     {
         if (startPlayed && !startSound.isPlaying() && !scanSound.isPlaying() && !isWaitingBetweenSounds)
@@ -120,6 +129,9 @@ public class GameWorld extends World
         updateScoreLabel();
     }
 
+    /**
+     * Handles the transition to the game over screen
+     */
     public void lose()
     {
         startSound.stop();

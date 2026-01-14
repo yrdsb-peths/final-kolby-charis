@@ -1,5 +1,8 @@
 import greenfoot.*;
 
+/**
+ * Player-controlled actor that can move in four directions.
+ */
 public class Player extends Actor
 {
     public Player()
@@ -9,6 +12,9 @@ public class Player extends Actor
         setImage(player);
     }
 
+    /**
+     * Handles keyboard input for movement.
+     */
     public void act()
     {
         if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w"))

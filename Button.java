@@ -1,5 +1,8 @@
 import greenfoot.*;
 
+/**
+ * Button that provides visual feedback on hover and world transitions on click.
+ */
 public class Button extends Actor
 {
     private String text;
@@ -8,6 +11,9 @@ public class Button extends Actor
     private Color lineColor;
     private int targetLevel;
     
+    /**
+     * Initializes a button with label text, font size, and the level to load when clicked.
+     */
     public Button(String text, int fontSize, int targetLevel)
     {
         this.text = text;
@@ -18,6 +24,9 @@ public class Button extends Actor
         updateImage();
     }
     
+    /**
+     * Monitors mouse clicks and hover events.
+     */
     public void act()
     {
         if (Greenfoot.mouseClicked(this))

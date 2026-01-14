@@ -1,7 +1,15 @@
 import greenfoot.*;
 
+/**
+ * The start world displaying the title, instructions, and controls.
+ */
 public class TitleScreen extends World
 {
+    /**
+     * Constructor for objects of class TitleScreen.
+     * Initializes world with a background, title, instructions, controls,
+     * and a hint to start the game.
+     */
     public TitleScreen()
     {    
         super(600, 400, 1); 
@@ -33,15 +41,14 @@ public class TitleScreen extends World
         controls.setFillColor(Color.CYAN);
         addObject(controls, 300, 275);
 
-        Label highScoreLabel = new Label("High Score: " + ScoreManager.getHighScore(), 35);
-        highScoreLabel.setFillColor(Color.YELLOW);
-        addObject(highScoreLabel, 300, 310);
-
         Label startHint = new Label("Press 'SPACE' to start", 45);
         startHint.setFillColor(Color.WHITE);
-        addObject(startHint, 300, 355);
+        addObject(startHint, 300, 335);
     }
 
+    /**
+     * Checks for user input to start the game.
+     */
     public void act()
     {
         if (Greenfoot.isKeyDown("space"))
