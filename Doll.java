@@ -2,7 +2,6 @@ import greenfoot.*;
 
 public class Doll extends Actor
 {
-    
     public Doll()
     {
         faceBack();

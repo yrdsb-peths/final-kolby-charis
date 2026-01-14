@@ -10,6 +10,7 @@ public class GameWorld extends World
     boolean allowMovement = false;
     int lastX;
     int lastY;
+    Label scoreLabel = new Label("Score: 0", 30);
     
     public GameWorld()
     {    
@@ -19,6 +20,8 @@ public class GameWorld extends World
         setBackground(background);
         addObject(doll, getWidth() / 2 - 5, 90);
         addObject(player, 400, 350);
+        addObject(scoreLabel, 100, 30);
+        updateScoreLabel();
     }
 
     public void act()
@@ -51,7 +54,7 @@ public class GameWorld extends World
             {
                 startSound.stop();
                 scanSound.stop();
-                Greenfoot.setWorld(new GameOver());
+                Greenfoot.setWorld(new GameOver(ScoreManager.getScore() + (350 - player.getY())));
             }
         }
 
@@ -59,7 +62,18 @@ public class GameWorld extends World
         {
             startSound.stop();
             scanSound.stop();
-            Greenfoot.setWorld(new Win());
+            ScoreManager.addScore(350 - player.getY());
+            Greenfoot.setWorld(new Win(ScoreManager.getScore()));
+            return;
         }
+
+        updateScoreLabel();
+    }
+
+    private void updateScoreLabel()
+    {
+        int currentRoundScore = 350 - player.getY();
+        if (currentRoundScore < 0) currentRoundScore = 0;
+        scoreLabel.setValue("Score: " + (ScoreManager.getScore() + currentRoundScore));
     }
 }

@@ -8,7 +8,8 @@ public class Player extends Actor
         player.scale(50, 75);
         setImage(player);
     }
-   public void act()
+
+    public void act()
     {
         if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w"))
         {

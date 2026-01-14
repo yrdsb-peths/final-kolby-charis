@@ -20,6 +20,10 @@ public class Button extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
+            if (getWorld() instanceof GameOver)
+            {
+                ScoreManager.resetScore();
+            }
             Greenfoot.setWorld(new Countdown());
         }
         

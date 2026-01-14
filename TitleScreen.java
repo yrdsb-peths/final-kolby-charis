@@ -3,6 +3,7 @@ import greenfoot.*;
 public class TitleScreen extends World
 {
     Label title = new Label("Red Light, Green Light", 60);
+
     public TitleScreen()
     {    
         super(600, 400, 1); 
@@ -19,6 +20,7 @@ public class TitleScreen extends World
     {
         if (Greenfoot.isKeyDown("space"))
         {
+            ScoreManager.resetScore();
             Greenfoot.setWorld(new Countdown());
         }
     }
