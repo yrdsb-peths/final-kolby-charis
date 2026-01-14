@@ -3,7 +3,7 @@ import greenfoot.*;
 public class Countdown extends World {
     SimpleTimer timer = new SimpleTimer();
     Label countdown = new Label(3, 80);
-    Bar bar = new Bar("Time", "", 3000, 3000);
+    Bar bar = new Bar("", "", 3000, 3000);
 
     public Countdown() {
         super(600, 400, 1);
@@ -11,15 +11,15 @@ public class Countdown extends World {
         background.scale(600, 400);
         setBackground(background);
         
-        addObject(countdown, getWidth() / 2, getHeight() / 2);
+        addObject(countdown, 300, 180);
         countdown.setFillColor(Color.YELLOW);
         countdown.setLineColor(Color.BLACK);
         timer.mark();
 
-        addObject(bar, getWidth() / 2, getHeight() / 2 + 70);
+        addObject(bar, 300, 260);
         bar.setShowTextualUnits(false);
-        bar.setBarWidth(200);
-        bar.setBarHeight(20);
+        bar.setBarWidth(250);
+        bar.setBarHeight(25);
         bar.setSafeColor(Color.YELLOW);
         bar.setDangerColor(Color.RED);
     }

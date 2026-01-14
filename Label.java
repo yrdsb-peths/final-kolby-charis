@@ -17,8 +17,7 @@ public class Label extends Actor
     private int fontSize;
     private Color lineColor = Color.BLACK;
     private Color fillColor = Color.WHITE;
-    
-    private static final Color transparent = new Color(0,0,0,0);
+    private Color backgroundColor = new Color(0,0,0,0);
 
     
     /**
@@ -82,6 +81,17 @@ public class Label extends Actor
         this.fillColor = fillColor;
         updateImage();
     }
+
+    /**
+     * Sets the background color of the text
+     * 
+     * @param backgroundColor the background color of the text
+     */
+    public void setBackgroundColor(Color backgroundColor)
+    {
+        this.backgroundColor = backgroundColor;
+        updateImage();
+    }
     
 
     /**
@@ -89,6 +99,6 @@ public class Label extends Actor
      */
     private void updateImage()
     {
-        setImage(new GreenfootImage(value, fontSize, fillColor, transparent, lineColor));
+        setImage(new GreenfootImage(value, fontSize, fillColor, backgroundColor, lineColor));
     }
 }

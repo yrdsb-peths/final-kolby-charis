@@ -28,9 +28,9 @@ public class Button extends Actor
         }
         
         if (Greenfoot.mouseMoved(this)) {
-            fillColor = Color.YELLOW;
+            fillColor = Color.GREEN;
             updateImage();
-        } else if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this) && fillColor == Color.YELLOW) {
+        } else if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this) && fillColor == Color.GREEN) {
             fillColor = Color.WHITE;
             updateImage();
         }
