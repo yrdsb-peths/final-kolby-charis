@@ -5,6 +5,10 @@ public class Win extends World
     public Win(int finalScore)
     {    
         super(600, 400, 1); 
+        GreenfootImage background = new GreenfootImage("game setting.png");
+        background.scale(600, 400);
+        setBackground(background);
+        
         Label win = new Label("You win!", 70);
         win.setFillColor(Color.GREEN);
         win.setLineColor(Color.BLACK);

@@ -5,6 +5,10 @@ public class GameOver extends World
     public GameOver(int finalScore)
     {    
         super(600, 400, 1); 
+        GreenfootImage background = new GreenfootImage("game setting.png");
+        background.scale(600, 400);
+        setBackground(background);
+
         Label gameOver = new Label("Game Over", 70);
         gameOver.setFillColor(Color.RED);
         gameOver.setLineColor(Color.BLACK);

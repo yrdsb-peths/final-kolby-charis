@@ -12,6 +12,9 @@ public class GameWorld extends World
     int lastY;
     Label scoreLabel = new Label("Score: 0", 30);
     SimpleTimer deductionTimer = new SimpleTimer();
+    SimpleTimer delayTimer = new SimpleTimer();
+    boolean isWaitingBetweenSounds = false;
+    int currentRandomDelay = 0;
     
     public GameWorld()
     {    
@@ -30,8 +33,17 @@ public class GameWorld extends World
 
     public void act()
     {
-        if (startPlayed && !startSound.isPlaying() && !scanSound.isPlaying())
+        if (startPlayed && !startSound.isPlaying() && !scanSound.isPlaying() && !isWaitingBetweenSounds)
         {
+            isWaitingBetweenSounds = true;
+            delayTimer.mark();
+            currentRandomDelay = 1000 + Greenfoot.getRandomNumber(1001);
+            return;
+        }
+
+        if (isWaitingBetweenSounds && delayTimer.millisElapsed() >= currentRandomDelay)
+        {
+            isWaitingBetweenSounds = false;
             startSound.stop();
             scanSound.play();
             doll.faceFront();
@@ -42,7 +54,7 @@ public class GameWorld extends World
             return;
         }
 
-        if (!startPlayed && !startSound.isPlaying() && !scanSound.isPlaying())
+        if (!startPlayed && !startSound.isPlaying() && !scanSound.isPlaying() && !isWaitingBetweenSounds)
         {
             scanSound.stop();
             startSound.play();
