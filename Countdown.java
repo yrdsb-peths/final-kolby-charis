@@ -12,10 +12,16 @@ public class Countdown extends World {
         setBackground(background);
         
         addObject(countdown, getWidth() / 2, getHeight() / 2);
+        countdown.setFillColor(Color.YELLOW);
+        countdown.setLineColor(Color.BLACK);
         timer.mark();
 
-        addObject(bar, getWidth() / 2, getHeight() / 2 + 50);
+        addObject(bar, getWidth() / 2, getHeight() / 2 + 70);
         bar.setShowTextualUnits(false);
+        bar.setBarWidth(200);
+        bar.setBarHeight(20);
+        bar.setSafeColor(Color.YELLOW);
+        bar.setDangerColor(Color.RED);
     }
 
     public void act() {
@@ -26,7 +32,20 @@ public class Countdown extends World {
             Greenfoot.setWorld(new GameWorld());
         }
         
-        countdown.setValue(3 - (millisElapsed / 1000));
+        int secondsLeft = 3 - (millisElapsed / 1000);
+        countdown.setValue(secondsLeft);
+        
+        if (secondsLeft == 3) {
+            countdown.setFillColor(Color.GREEN);
+            bar.setSafeColor(Color.GREEN);
+        } else if (secondsLeft == 2) {
+            countdown.setFillColor(Color.YELLOW);
+            bar.setSafeColor(Color.YELLOW);
+        } else if (secondsLeft == 1) {
+            countdown.setFillColor(Color.RED);
+            bar.setSafeColor(Color.RED);
+            bar.setDangerColor(Color.RED);
+        }
         bar.setValue(timeLeftMillis);
     }
 }

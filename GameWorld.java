@@ -22,6 +22,8 @@ public class GameWorld extends World
         addObject(doll, getWidth() / 2 - 5, 90);
         addObject(player, 400, 350);
         addObject(scoreLabel, 100, 30);
+        scoreLabel.setFillColor(Color.YELLOW);
+        scoreLabel.setLineColor(Color.BLACK);
         updateScoreLabel();
         deductionTimer.mark();
     }
