@@ -49,12 +49,16 @@ public class GameWorld extends World
         {
             if (player.getX() != lastX || player.getY() != lastY)
             {
+                startSound.stop();
+                scanSound.stop();
                 Greenfoot.setWorld(new GameOver());
             }
         }
 
         if (player.getY() <= 100)
         {
+            startSound.stop();
+            scanSound.stop();
             Greenfoot.setWorld(new Win());
         }
     }
