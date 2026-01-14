@@ -21,6 +21,8 @@ public class GameWorld extends World
         super(600, 400, 1); 
         GreenfootImage background = new GreenfootImage("game setting.png");
         background.scale(600, 400);
+        background.setColor(Color.RED);
+        background.drawLine(0, 100, 600, 100);
         setBackground(background);
         addObject(doll, getWidth() / 2 - 5, 90);
         addObject(player, 400, 350);
