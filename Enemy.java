@@ -7,16 +7,33 @@ public class Enemy extends Actor
 {
     private int speed;
     
+    private GreenfootImage[] leftImages = new GreenfootImage[4];
+    private GreenfootImage[] rightImages = new GreenfootImage[4];
+    private SimpleTimer animationTimer = new SimpleTimer();
+    private int imageIndex = 0;
+    
     /**
      * Creates an enemy with a random starting direction and speed.
      */
     public Enemy()
     {
-        GreenfootImage img = new GreenfootImage("guard.png");
-        img.scale(24, 60); 
-        setImage(img);
+        for (int i = 0; i < 4; i++) {
+            leftImages[i] = new GreenfootImage("sprites/left" + (i + 1) + ".png");
+            leftImages[i].scale(32, 75);
+            rightImages[i] = new GreenfootImage("sprites/right" + (i + 1) + ".png");
+            rightImages[i].scale(32, 75);
+        }
+        
         speed = Greenfoot.getRandomNumber(2) + 1;
         if (Greenfoot.getRandomNumber(2) == 0) speed = -speed;
+        
+        if (speed < 0) {
+            setImage(leftImages[0]);
+        } else {
+            setImage(rightImages[0]);
+        }
+        
+        animationTimer.mark();
     }
 
     /**
@@ -24,6 +41,7 @@ public class Enemy extends Actor
      */
     public void act()
     {
+        animate();
         setLocation(getX() + speed, getY());
         if (isAtEdge())
         {
@@ -35,5 +53,29 @@ public class Enemy extends Actor
             GameWorld world = (GameWorld)getWorld();
             world.lose();
         }
+    }
+    
+    /**
+     * Animates enemy based on movement direction.
+     */
+    private void animate()
+    {
+        if (animationTimer.millisElapsed() < 100)
+        {
+            return;
+        }
+        
+        if (speed < 0) 
+        {
+            setImage(leftImages[imageIndex]);
+        } 
+
+        else 
+        {
+            setImage(rightImages[imageIndex]);
+        }
+        
+        imageIndex = (imageIndex + 1) % 4;
+        animationTimer.mark();
     }
 }
